@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rubyapp
+  labels:
+    app: ruby
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ruby
+  template:
+    metadata:
+      labels:
+        app: ruby
+    spec:
+      containers:
+      - name: rubwebapp
+        image: ghcr.io/sirishbandi/tapati-webapp:main
+        ports:
+        - containerPort: 80
